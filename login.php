@@ -7,9 +7,10 @@ $db = new DB();
 
 $sql = "SELECT * FROM felhasznalok WHERE nev = '" . $nev . "'";
 
- user = $db->queryGetOne( $sql );
+ $user = $db->queryGetOne( $sql );
 
 $attempt = hash('sha256' , hex2bin($user["salt"]) . $jelszo);
+
 if ($attempt === $user["jelszo"]) {
     echo "Sikeres belépés";
 }
