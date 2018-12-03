@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once("db.php");
 $nev = $_POST["name"];
 $jelszo = $_POST["password"];
@@ -12,8 +13,11 @@ $sql = "SELECT * FROM felhasznalok WHERE nev = '" . $nev . "'";
 $attempt = hash('sha256' , hex2bin($user["salt"]) . $jelszo);
 
 if ($attempt === $user["jelszo"]) {
-    echo "Sikeres belépés";
+	$_SESSION["userData"] = $user;
+    header('Location: /fooldal.php');
 }
 else {
-    echo "Sikertelen belépés";
+
+	$_SESSION["isLoginError"] = true;
+    header('Location: /index.php');
 }

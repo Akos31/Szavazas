@@ -27,6 +27,19 @@
     </div>
       <div>
         <h1>Bejelentkezés</h1>
+        <?php
+        session_start();
+        if (isset($_SESSION['isLoginError'])) {
+        	if ($_SESSION['isLoginError']) {
+        		echo '
+        		<div style="color:red; font-size: 20pt">
+        			Rossz jelszó vagy felhasználónevet adtál meg!
+        		    </div>';
+        		    $_SESSION['isLoginError'] = false;
+        	}
+        }
+
+         ?>
         <form method="post" action="login.php">
             <div>
                 <label>Név</label>

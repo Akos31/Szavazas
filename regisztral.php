@@ -26,3 +26,5 @@ echo $sql;
 $db = new DB();
 
 $db->update( $sql );
+
+header('Location: fooldal.php');
