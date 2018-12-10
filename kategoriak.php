@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<title>Főoldal</title>
+  <title>Főoldal</title>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -15,7 +14,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Kezdőlap </a>
+        <a class="nav-link" href="fooldal.php">Kezdőlap </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Új kép feltöltése</a>
@@ -27,8 +26,8 @@
       <?php
       session_start();
       if ($_SESSION["userData"]["jogosultsag"] === "3") {
-      	echo '<li class="nav-item">
-        <a class="nav-link" href="kategoriak.php">
+        echo '<li class="nav-item">
+        <a class="nav-link active" href="#">
         Kategóriák</a>
       </li>';
       }
@@ -37,19 +36,18 @@
      <div>
 <?php
 
-
 if (isset($_SESSION["userData"])) {
-	echo '
-	<p style="margin-right: 10px; margin-top: 8px; font-style: italic">Belépve mint: ' . $_SESSION["userData"]["nev"] . ',
-	 jogosultság: ' . getPermission($_SESSION["userData"]["jogosultsag"]) . '</p>' ;
+  echo '
+  <p style="margin-right: 10px; margin-top: 8px; font-style: italic">Belépve mint: ' . $_SESSION["userData"]["nev"] . ',
+   jogosultság: ' . getPermission($_SESSION["userData"]["jogosultsag"]) . '</p>' ;
 }
 
 function getPermission($szam) {
-	if ($szam === '1') {
-		return "fotós";
-	}
+  if ($szam === '1') {
+    return "fotós";
+  }
     else if ($szam === '2') {
-    	return "zsűri";
+      return "zsűri";
     }
   
     return "admin";
@@ -57,7 +55,7 @@ function getPermission($szam) {
 }
 
 ?>
-	
+  
 </div>
     <form class="form-inline my-2 my-lg-0" action="/logout.php">
       <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Kilépés</button>
