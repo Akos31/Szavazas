@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Főoldal</title>
+  <title>Kategóriák</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -53,7 +53,6 @@ function getPermission($szam) {
     return "admin";
     
 }
-
 ?>
   
 </div>
@@ -62,5 +61,25 @@ function getPermission($szam) {
     </form>
   </div>
 </nav>
+<div style="padding: 1%">
+<?php
+require_once("kategoria_oldal.php");
+ ?> 
+</div>
 </body>
+<script type="text/javascript">
+  function inputLegyen() {
+    let form = document.getElementById("inputForm");
+    form.style.display = "block";
+    let ujgomb = document.getElementById("ujGomb");
+    ujgomb.style.display = "none";
+  }
+
+  function mentettem() {
+ let form = document.getElementById("inputForm");
+    form.style.display = "none";
+    let ujgomb = document.getElementById("ujGomb");
+    ujgomb.style.display = "block";
+  }
+</script>
 </html>
